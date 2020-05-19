@@ -4,17 +4,20 @@ html,
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
-  height: 200%;
+  height: 100%;
   width: 100%;
   background: #fafafa;
 }
 
 .header {
   display: flex;
+  position: fixed;
   align-items: center;
+  top: 0;
   height: 90px;
   background: white;
   box-shadow: 0 -2px 11px #858585;
+  width: 100%;
 
   img {
     margin: 0 15px 0 30px;
@@ -47,7 +50,7 @@ body {
   margin: 40px 20px;
   border-radius: 10px;
   box-shadow: 0 1px 21px -8px #858585;
-  padding: 0 20px;
+  padding: 5px 20px;
   background: white;
 
   hr {
@@ -68,5 +71,27 @@ body {
     font-size: 0.8em;
     text-align: right;
     margin-top: 25px;
+  }
+
+  table {
+    margin: 0 0 10px 0;
+    border-collapse: collapse;
+
+    tr {
+      height: 35px;
+
+      &:first-of-type {
+        border-bottom: 1px solid black;
+      }
+
+      td {
+        text-align: center;
+
+        &:first-of-type {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
   }
 }
