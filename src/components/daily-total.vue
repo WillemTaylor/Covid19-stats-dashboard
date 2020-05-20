@@ -1,49 +1,58 @@
 <template>
   <div>
-    <div class="tile-container" v-for="tile in data" :key="tile.data">
-      <h3>Today's global figures:</h3>
-      <hr />
-      <span>
-        <p>
-          <b>Confirmed cases:</b>
-        </p>
-        <p>{{ tile.confirmed | formatCommas }}</p>
-      </span>
-      <span>
-        <p>
-          <b>Recovered:</b>
-        </p>
-        <p>{{ tile.recovered | formatCommas }}</p>
-      </span>
-      <span>
-        <p>
-          <b>Deaths:</b>
-        </p>
-        <p>{{ tile.deaths | formatCommas }}</p>
-      </span>
-      <span>
-        <p>
-          <b>Active cases:</b>
-        </p>
-        <p>{{ tile.active | formatCommas }}</p>
-      </span>
-      <span>
-        <p>
-          <b>Death to infected rate:</b>
-        </p>
-        <p>{{ ((tile.deaths / tile.confirmed) * 100).toFixed(2) }}%</p>
-      </span>
+    <div class="flex-container">
+      <div class="tile-container" v-for="tile in data" :key="tile.data">
+        <h3>Today's global figures:</h3>
+        <hr />
+        <span>
+          <p>
+            <b>Confirmed cases:</b>
+          </p>
+          <p>{{ tile.confirmed | formatCommas }}</p>
+        </span>
+        <span>
+          <p>
+            <b>Recovered:</b>
+          </p>
+          <p>{{ tile.recovered | formatCommas }}</p>
+        </span>
+        <span>
+          <p>
+            <b>Deaths:</b>
+          </p>
+          <p>{{ tile.deaths | formatCommas }}</p>
+        </span>
+        <span>
+          <p>
+            <b>Active cases:</b>
+          </p>
+          <p>{{ tile.active | formatCommas }}</p>
+        </span>
+        <span>
+          <p>
+            <b>Death to infected rate:</b>
+          </p>
+          <p>{{ ((tile.deaths / tile.confirmed) * 100).toFixed(2) }}%</p>
+        </span>
+      </div>
+      <div>
+        <chart-daily :covidStats="data" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import ChartDaily from "./chart-daily";
 
 export default {
+  components: {
+    ChartDaily
+  },
   data() {
     return {
-      data: ""
+      data: []
     };
   },
   mounted() {

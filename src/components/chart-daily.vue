@@ -1,7 +1,7 @@
 <template>
   <div class="chart-container">
-    <h2>Global Breakdown</h2>
-    <canvas id="chart" />
+    <h2>Daily Breakdown</h2>
+    <canvas id="chart2" />
   </div>
 </template>
 
@@ -16,9 +16,9 @@ export default {
   data() {
     return {
       casesChartData: casesChartData(
-        "Critical Cases",
+        "Active Cases",
         this.covidStats.map(x => x.confirmed)[0],
-        this.covidStats.map(x => x.critical)[0],
+        this.covidStats.map(x => x.active)[0],
         this.covidStats.map(x => x.recovered)[0],
         this.covidStats.map(x => x.deaths)[0]
       )
@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     createChart(chartData) {
-      return new Chart("chart", {
+      return new Chart("chart2", {
         type: chartData.type,
         data: chartData.data,
         options: chartData.options

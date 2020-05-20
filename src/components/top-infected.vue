@@ -1,5 +1,5 @@
 <template>
-  <div class="tile-container">
+  <div class="tile-container last">
     <h3>Top infected Countries:</h3>
     <hr />
     <table>
