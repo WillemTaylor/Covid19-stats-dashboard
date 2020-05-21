@@ -1,29 +1,22 @@
-# covid-dashboard
+# Covid-19 Statistic Dashboard
 
-## Project setup
-```
-npm install
-```
+This development challenge was created by myself and makes use of a Covid-19 API here: https://rapidapi.com/Gramzivi/api/covid-19-data
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### The Challenge
 
-### Compiles and minifies for production
-```
-npm run build
-```
+The task was to integrate a Covid-19 API to pull various statistics, and manipulate the data to display an easy to read dashboard.
 
-### Run your tests
-```
-npm run test
-```
+### What it does
 
-### Lints and fixes files
-```
-npm run lint
-```
+You should be able to:
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- See a breakdown of the global statistics from daily and all time perspectives
+- View a bar chart of global statistics from daily and all time perspectives
+- View the top 5 infected countries and breakdown of stats
+- Search for a specific Country
+- View breakdown of a specific country on a separate page, including stats overview and bar chart
+
+# Hosted site
+
+Project was written using Vue.js framework, including icons taken from https://fontawesome.com/ and covid-19 API pulled using Axios (https://github.com/axios/axios). Bar charts were also created using Chart.js (https://www.chartjs.org/)
+Finally, the project was deployed to Netlify here: https://covid-stats-dashboard.netlify.app/#/
