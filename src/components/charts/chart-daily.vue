@@ -7,7 +7,7 @@
 
 <script>
 import Chart from "chart.js";
-import casesChartData from "../assets/chart-data.js";
+import casesChartData from "../../assets/chart-data.js";
 
 export default {
   props: {

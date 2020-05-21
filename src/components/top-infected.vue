@@ -1,6 +1,6 @@
 <template>
   <div class="flex-container">
-    <div class="tile-container last">
+    <div class="tile-container">
       <h3>Top infected Countries:</h3>
       <hr />
       <table>
@@ -25,12 +25,12 @@
 </template>
 
 <script>
-import Italy from './countries/italy';
-import Usa from './countries/usa';
-import Uk from './countries/uk';
-import Spain from './countries/spain';
-import France from './countries/france';
-import Search from './search';
+import Italy from "./countries/italy";
+import Usa from "./countries/usa";
+import Uk from "./countries/uk";
+import Spain from "./countries/spain";
+import France from "./countries/france";
+import Search from "./search";
 
 export default {
   components: {
@@ -39,7 +39,16 @@ export default {
     Uk,
     Spain,
     France,
-    Search,
-  },
+    Search
+  }
 };
 </script>
+
+<style lang="scss" scoped>
+.flex-container {
+  @media only screen and (min-width: 1440px) {
+    margin-top: 140px;
+    align-items: unset;
+  }
+}
+</style>

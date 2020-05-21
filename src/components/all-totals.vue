@@ -47,7 +47,7 @@
 
 <script>
 import axios from "axios";
-import ChartTotals from "./chart-totals";
+import ChartTotals from "./charts/chart-totals";
 
 export default {
   components: {

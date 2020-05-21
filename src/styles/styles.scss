@@ -8,6 +8,7 @@ body {
   height: 100%;
   width: 100%;
   background: #fafafa;
+  color: #3d0d0d;
 }
 
 .header {
@@ -68,10 +69,6 @@ body {
   @media only screen and (min-width: $desktop) {
     width: 400px;
     height: 362px;
-
-    &.last {
-      margin: 40px auto;
-    }
   }
 
   hr {
@@ -147,12 +144,15 @@ body {
     height: 55px;
     min-width: 280px;
     width: 95%;
-    text-indent: 70px;
-    padding-right: 20px;
+    padding: 0 20px 0 70px;
+
+    @media only screen and (min-width: $desktop) {
+      width: 500px;
+      padding-left: 110px;
+    }
 
     &::placeholder {
       font-family: 'Roboto', sans-serif;
-      text-indent: 70px;
     }
   }
 
@@ -165,6 +165,11 @@ body {
     margin-top: 16px;
     left: 50px;
     cursor: pointer;
+
+    @media only screen and (min-width: $desktop) {
+      left: unset;
+      margin-left: 40px;
+    }
   }
 }
 
@@ -172,11 +177,15 @@ body {
   border-radius: 10px;
   box-shadow: 0 1px 21px -8px #858585;
   width: 90%;
-  margin: 0 20px 40px 20px;
+  margin: 0 20px 100px 20px;
   background-color: white;
   min-width: 280px;
   text-indent: 70px;
   padding: 10px 0;
+
+  @media only screen and (min-width: $desktop) {
+    width: 96%;
+  }
 
   div {
     margin: 15px 0;

@@ -1,14 +1,21 @@
 <template>
   <div>
+    <heading />
     <div class="flex-container">
       <div class="tile-container" v-for="tile in data" :key="tile.data">
-        <h3>Today's global figures:</h3>
+        <h2>{{ tile.country }}</h2>
         <hr />
         <span>
           <p>
             <b>Confirmed cases:</b>
           </p>
           <p>{{ tile.confirmed | formatCommas }}</p>
+        </span>
+        <span>
+          <p>
+            <b>Critical cases:</b>
+          </p>
+          <p>{{ tile.critical | formatCommas }}</p>
         </span>
         <span>
           <p>
@@ -24,31 +31,30 @@
         </span>
         <span>
           <p>
-            <b>Active cases:</b>
-          </p>
-          <p>{{ tile.active | formatCommas }}</p>
-        </span>
-        <span>
-          <p>
             <b>Death to infected rate:</b>
           </p>
           <p>{{ ((tile.deaths / tile.confirmed) * 100).toFixed(2) }}%</p>
         </span>
+        <p class="updated">
+          <i>Last updated: {{ tile.lastUpdate | formatDateUpdate }}</i>
+        </p>
       </div>
       <div>
-        <chart-daily :covidStats="data" />
+        <chart-country :covidStats="data" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Heading from "../components/heading";
+import ChartCountry from "../components/charts/chart-country.vue";
 import axios from "axios";
-import ChartDaily from "./charts/chart-daily";
 
 export default {
   components: {
-    ChartDaily
+    Heading,
+    ChartCountry
   },
   data() {
     return {
@@ -56,9 +62,11 @@ export default {
     };
   },
   mounted() {
+    let path = window.location.hash.substring(2).toLowerCase();
+
     axios({
       method: "GET",
-      url: "https://covid-19-data.p.rapidapi.com/report/totals",
+      url: "https://covid-19-data.p.rapidapi.com/country",
       headers: {
         "content-type": "application/octet-stream",
         "x-rapidapi-host": "covid-19-data.p.rapidapi.com",
@@ -66,9 +74,8 @@ export default {
         useQueryString: true
       },
       params: {
-        "date-format": "YYYY-MM-DD",
         format: "json",
-        date: "2020-04-01"
+        name: path
       }
     })
       .then(response => {
@@ -78,13 +85,21 @@ export default {
         console.log(error);
         this.data = [
           {
-            confirmed: 932346,
-            recovered: 183351,
-            deaths: 6807,
-            active: 484122
+            country: "Err",
+            confirmed: "Err",
+            critical: "Err",
+            recovered: "Err",
+            deaths: "Err",
+            lastUpdate: new Date()
           }
         ];
       });
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.flex-container {
+  margin-top: 140px;
+}
+</style>
