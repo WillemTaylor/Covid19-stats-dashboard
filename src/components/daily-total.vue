@@ -28,6 +28,7 @@
           </p>
           <p>{{ tile.active | formatCommas }}</p>
         </span>
+        <hr />
         <span>
           <p>
             <b>Death to infected rate:</b>
@@ -35,7 +36,7 @@
           <p>{{ ((tile.deaths / tile.confirmed) * 100).toFixed(2) }}%</p>
         </span>
       </div>
-      <div>
+      <div v-if="data.length > 0">
         <chart-daily :covidStats="data" />
       </div>
     </div>

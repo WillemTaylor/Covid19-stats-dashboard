@@ -29,6 +29,7 @@
           </p>
           <p>{{ tile.deaths | formatCommas }}</p>
         </span>
+        <hr />
         <span>
           <p>
             <b>Death to infected rate:</b>
@@ -39,7 +40,7 @@
           <i>Last updated: {{ tile.lastUpdate | formatDateUpdate }}</i>
         </p>
       </div>
-      <div>
+      <div v-if="data.length > 0">
         <chart-country :covidStats="data" />
       </div>
     </div>
@@ -85,11 +86,11 @@ export default {
         console.log(error);
         this.data = [
           {
-            country: "Err",
-            confirmed: "Err",
-            critical: "Err",
-            recovered: "Err",
-            deaths: "Err",
+            country: "",
+            confirmed: "228006",
+            critical: "640",
+            recovered: "134560",
+            deaths: "32486",
             lastUpdate: new Date()
           }
         ];

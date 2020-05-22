@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       casesChartData: casesChartData(
-        "Active Cases",
+        "Critical Cases",
         this.covidStats.map(x => x.confirmed)[0],
         this.covidStats.map(x => x.critical)[0],
         this.covidStats.map(x => x.recovered)[0],

@@ -1,6 +1,6 @@
 <template>
   <tr>
-    <td>{{ data.map(x => x.country)[0] }}</td>
+    <td @click="onClick">{{ data.map(x => x.country)[0] }}</td>
     <td>{{ data.map(x => x.confirmed)[0] | formatCommas }}</td>
     <td>{{ data.map(x => x.recovered)[0] | formatCommas }}</td>
     <td>{{ data.map(x => x.deaths)[0] | formatCommas }}</td>
@@ -46,6 +46,13 @@ export default {
           }
         ];
       });
+  },
+  methods: {
+    onClick() {
+      if (event) {
+        this.$router.push(`/${event.target.innerHTML}`);
+      }
+    }
   }
 };
 </script>

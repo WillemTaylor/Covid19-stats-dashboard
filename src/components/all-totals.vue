@@ -28,6 +28,7 @@
           </p>
           <p>{{ tile.deaths | formatCommas }}</p>
         </span>
+        <hr />
         <span>
           <p>
             <b>Death to infected rate:</b>
@@ -38,7 +39,7 @@
           <i>Last updated: {{ tile.lastUpdate | formatDateUpdate }}</i>
         </p>
       </div>
-      <div>
+      <div v-if="data.length > 0">
         <chart-totals :covidStats="data" />
       </div>
     </div>
